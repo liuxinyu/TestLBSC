@@ -3,14 +3,14 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#ff000000"
+    android:background="#ffffffff"
     >
 <ImageView
 	android:layout_width = "fill_parent"
 	android:layout_height = "wrap_content"
 	android:layout_marginTop = "10px"
-	android:layout_marginBottom = "10px"
 	android:adjustViewBounds = "true"
+	android:scaleType = "centerCrop"
 	android:src = "@drawable/logobar"
 	/>
 <GridView
@@ -18,8 +18,8 @@
          android:layout_width="fill_parent"
          android:layout_height="wrap_content"
          android:numColumns="2"
-         android:verticalSpacing="10dip"
-         android:horizontalSpacing="10dip"
+         android:verticalSpacing="0dip"
+         android:horizontalSpacing="0dip"
          android:stretchMode="columnWidth"
          android:gravity="center"
          />
