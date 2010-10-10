@@ -17,12 +17,15 @@ public final class R {
         public static final int grid_setting=0x7f020003;
         public static final int icon=0x7f020004;
         public static final int logobar=0x7f020005;
+        public static final int tab_place=0x7f020006;
+        public static final int tab_question=0x7f020007;
     }
     public static final class id {
         public static final int maingrid=0x7f050000;
     }
     public static final class layout {
         public static final int main=0x7f030000;
+        public static final int placelist=0x7f030001;
     }
     public static final class string {
         public static final int app_name=0x7f040001;

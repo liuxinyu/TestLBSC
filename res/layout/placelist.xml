@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffffffff"
+    >
+	<LinearLayout
+		android:orientation="horizontal"
+		android:layout_width="fill_parent"
+    	android:layout_height="wrap_content"
+		>	
+		<ImageView
+			android:layout_width = "wrap_content"
+			android:layout_height = "fill_parent"
+			android:adjustViewBounds = "true"
+			android:layout_gravity="left"
+			android:src = "@drawable/tab_place"
+			/>
+		<LinearLayout
+			android:orientation="horizontal"
+			android:layout_width="fill_parent"
+	    	android:layout_height="wrap_content"
+			android:gravity="right"
+			>	
+			<ImageButton
+				android:layout_width = "wrap_content"
+				android:layout_height = "fill_parent"
+				android:src = "@drawable/tab_question"
+				/>
+		</LinearLayout>
+	</LinearLayout>	
+	<ListView
+		android:id="@android:id/list"
+		android:layout_width="fill_parent" 
+		android:layout_height="wrap_content"
+		android:drawSelectorOnTop="false"
+		android:textColor="#444444"
+		android:dividerHeight="0px"
+		android:cacheColorHint="#00000000"
+		/>
+</LinearLayout>

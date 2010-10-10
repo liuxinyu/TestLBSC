@@ -2,6 +2,7 @@ package com.lxy.lbsc;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +29,10 @@ public class LBSC extends Activity {
         menuGrid.setOnItemClickListener(new OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
                 Toast.makeText(LBSC.this, "" + position, Toast.LENGTH_SHORT).show();
+                if(position==0){
+                	Intent intent = new Intent(LBSC.this, PlacelistActivity.class);
+                    startActivity(intent);
+                }
             }
         });
     }
