@@ -27,6 +27,7 @@
 				android:layout_width = "wrap_content"
 				android:layout_height = "fill_parent"
 				android:src = "@drawable/tab_question"
+				android:adjustViewBounds="true"
 				/>
 		</LinearLayout>
 	</LinearLayout>	
@@ -36,7 +37,9 @@
 		android:layout_height="wrap_content"
 		android:drawSelectorOnTop="false"
 		android:textColor="#444444"
-		android:dividerHeight="0px"
-		android:cacheColorHint="#00000000"
+		android:divider = "#000000"
+		android:footerDividersEnabled = "false"
+		android:headerDividersEnabled="false" 
+
 		/>
 </LinearLayout>

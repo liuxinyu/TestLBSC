@@ -2,4 +2,13 @@
 <resources>
     <string name="hello">Hello World, LBSC!</string>
     <string name="app_name">TestLBSC</string>
+    <string-array name="placelist_array">
+        <item>新中关</item>
+        <item>国贸</item>
+        <item>海中市场</item>
+        <item>中关村中学</item>
+        <item>北京理工大学</item>
+        <item>人民大学</item>
+        <item>南门烤翅</item>
+    </string-array>
 </resources>

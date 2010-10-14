@@ -17,7 +17,6 @@ import android.widget.Toast;
 
 public class LBSC extends Activity {
 	GridView menuGrid; 
-	String menu_items[]={"地点", "问题", "我", "设置" }; 
 	/** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -27,11 +26,13 @@ public class LBSC extends Activity {
         menuGrid = (GridView) findViewById(R.id.maingrid);
         menuGrid.setAdapter(new ImageAdapter(this));
         menuGrid.setOnItemClickListener(new OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-                Toast.makeText(LBSC.this, "" + position, Toast.LENGTH_SHORT).show();
+            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {                
                 if(position==0){
                 	Intent intent = new Intent(LBSC.this, PlacelistActivity.class);
                     startActivity(intent);
+                }
+                else{
+                	Toast.makeText(LBSC.this, "" + position, Toast.LENGTH_SHORT).show();
                 }
             }
         });
