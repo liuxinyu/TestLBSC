@@ -22,7 +22,7 @@
 		android:layout_width="wrap_content"
 		android:layout_height="fill_parent"
 		android:gravity="left|center_vertical"
-		android:text="地点列表！"
+		android:text="placename"
 		android:textStyle="bold"
 		android:textColor="#515a51"
 		/>

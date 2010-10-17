@@ -24,9 +24,11 @@
 			android:gravity="right"
 			>	
 			<ImageButton
+				android:id = "@+id/button_question"
 				android:layout_width = "wrap_content"
 				android:layout_height = "fill_parent"
 				android:src = "@drawable/tab_question"
+				android:background="#00000000"
 				android:adjustViewBounds="true"
 				/>
 		</LinearLayout>

@@ -27,8 +27,11 @@ public class LBSC extends Activity {
         menuGrid.setAdapter(new ImageAdapter(this));
         menuGrid.setOnItemClickListener(new OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {                
-                if(position==0){
+                if(position==0){ // place
                 	Intent intent = new Intent(LBSC.this, PlacelistActivity.class);
+                    startActivity(intent);
+                }else if (position==2){ // me 
+                	Intent intent = new Intent(LBSC.this, login_mgmt.class);
                     startActivity(intent);
                 }
                 else{
