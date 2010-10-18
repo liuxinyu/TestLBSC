@@ -11,4 +11,14 @@
         <item>人民大学</item>
         <item>南门烤翅</item>
     </string-array>
+<string name="email">Email:</string>
+<string name="password">密码:</string>
+<string name="name">姓名:</string>
+<string name="password_set">设置密码：</string>
+<string name="password_confirm">确认密码:</string>
+<string name="login">登录</string>
+<string name="signup">注册</string>
+<string name="url_login">http://localhost:3000/users</string>
+<string name="err_no_email">email地址不能为空;)</string>
+<string name="err_no_password">耍我！密码不能为空;)</string>
 </resources>
