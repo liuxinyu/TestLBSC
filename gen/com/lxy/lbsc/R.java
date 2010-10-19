@@ -52,8 +52,8 @@ public final class R {
     public static final class string {
         public static final int app_name=0x7f040001;
         public static final int email=0x7f040002;
-        public static final int err_no_email=0x7f04000a;
-        public static final int err_no_password=0x7f04000b;
+        public static final int err_no_email=0x7f04000b;
+        public static final int err_no_password=0x7f04000c;
         public static final int hello=0x7f040000;
         public static final int login=0x7f040007;
         public static final int name=0x7f040004;
@@ -62,5 +62,6 @@ public final class R {
         public static final int password_set=0x7f040005;
         public static final int signup=0x7f040008;
         public static final int url_login=0x7f040009;
+        public static final int url_test=0x7f04000a;
     }
 }
