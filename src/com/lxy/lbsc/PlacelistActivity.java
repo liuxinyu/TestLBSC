@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -50,6 +51,11 @@ public class PlacelistActivity extends ListActivity {
 	protected void onActivityResult(int requestCode, int resultCode,
 		Intent data) {
     }
+    
+    @Override
+    public void onListItemClick(ListView parent, View v, int position, long id) {
+    	Toast.makeText(this, getModel(position).toString(),4000).show();
+    }
 	
     private RowModel getModel(int position) {
 		return(((PlacelistAdapter)getListAdapter()).getItem(position));
@@ -63,70 +69,54 @@ public class PlacelistActivity extends ListActivity {
 		@Override
 		public boolean isEnabled(int position) {
 			boolean enabled = true; 			
-			/*RowModel model=getModel(position);
+			RowModel model=getModel(position);
 			if(model.toString().startsWith("-")){
 				enabled = false; 
-			}*/
+			}
 			return enabled; 
 		}
 		
 		@Override
 		public boolean areAllItemsEnabled(){
-			return true; 
+			return false; 
 		}
 		
 		public View getView(int position, View convertView, ViewGroup parent) {
-			/*TextView tv;
-            if (convertView == null) {
-                tv = (TextView) getLayoutInflater().inflate(
-                        android.R.layout.simple_expandable_list_item_1, parent, false);
-            } else {
-                tv = (TextView) convertView;
-            }
-            tv.setText(items[position]);
-            return tv;*/
-			
-			
+
 			View row=convertView;
 			RowModel model=getModel(position);
 			boolean isHeader = false; 
 			if(model.toString().startsWith("-")){
 				isHeader = true; 
 			}			
-
-			if (isHeader){
-				if (row==null){
-					LayoutInflater inflater=getLayoutInflater();				
-					row = inflater.inflate(R.layout.listheader, parent, false);
-					row.setTag(R.id.place_header_name, row.findViewById(R.id.place_header_name));
-				}
-				TextView label1=(TextView)row.getTag(R.id.place_header_name);			
-				if (label1!=null){
-					label1.setText(model.toString()); 
-				}else{
-					Log.e(TAG, "Error in get header name label in position="+position + "  Name=" + model.toString());
-				}
-				Log.w(TAG, "A header in position="+position + "  Name=" + model.toString());
+			if (row==null) {				
+				LayoutInflater inflater=getLayoutInflater();
+				row=inflater.inflate(R.layout.placerow, parent, false);
+				row.setTag(R.id.icon_place, row.findViewById(R.id.icon_place));
+				row.setTag(R.id.place_name, row.findViewById(R.id.place_name));
+				row.setTag(R.id.place_number_of_access, row.findViewById(R.id.place_number_of_access));
+				row.setTag(R.id.place_number_of_questions, row.findViewById(R.id.place_number_of_questions));
+				row.setTag(R.id.place_number_of_questions2, row.findViewById(R.id.place_number_of_questions2));
+				//row.setTag(R.id.place_number_of_access, row.findViewById(R.id.place_number_of_access));
 			}
-			else {
-				
-				if (row==null) {				
-					LayoutInflater inflater=getLayoutInflater();
-					row=inflater.inflate(R.layout.placerow, parent, false);
-					row.setTag(R.id.place_name, row.findViewById(R.id.place_name));
-					//row.setTag(R.id.place_number_of_access, row.findViewById(R.id.place_number_of_access));
-				}
-				TextView label1=(TextView)row.getTag(R.id.place_name);			
-				if (label1!=null){
-					label1.setText(model.toString());
-					Log.w(TAG, "Ok in get/set name label. Position="+position+"Name="+model.toString());
-				}
-				else{
-					Log.e(TAG, "Error in get name label. Position="+position+"Name="+model.toString());
-				}
-				
-				//ImageView icon=(ImageView)row.getTag(R.id.icon);
-				//icon.setImageResource(R.drawable.delete);
+			ImageView img = (ImageView)row.getTag(R.id.icon_place); 
+			TextView label1=(TextView)row.getTag(R.id.place_name);
+			TextView label2=(TextView)row.getTag(R.id.place_number_of_access);	
+			TextView label3=(TextView)row.getTag(R.id.place_number_of_questions);	
+			TextView label4=(TextView)row.getTag(R.id.place_number_of_questions2);	
+			label1.setText(model.toString());
+			Log.i(TAG, "Ok in get/set name label. Position="+position+"Name="+model.toString());
+			if(isHeader){
+				label2.setVisibility(View.INVISIBLE); 
+				label3.setVisibility(View.INVISIBLE); 
+				label4.setVisibility(View.INVISIBLE); 				
+				img.setVisibility(View.INVISIBLE); 
+			}else{
+				// todo: need to judge whether label2/3/4 has value first
+				label2.setVisibility(View.VISIBLE); 
+				label3.setVisibility(View.VISIBLE); 
+				label4.setVisibility(View.VISIBLE); 				
+				img.setVisibility(View.VISIBLE); 
 			}
 			return(row);
 			
@@ -144,12 +134,12 @@ public class PlacelistActivity extends ListActivity {
 	}
     
     String[] items={
-    		"-1-lorem", 
+    		"- 有问题", 
     		"2-ipsum", 
     		"3-dolor", 
     		"4-sit", 
     		"5-amet",
-			"6-consectetuer", 
+			"- 待发现", 
 			"7-adipiscing", 
 			"8-elit", 
 			"9-morbi", 
@@ -170,4 +160,5 @@ public class PlacelistActivity extends ListActivity {
 			"24-augue",
 			"25-purus"};
     private static final String TAG = "LBSC";
+    
 }
