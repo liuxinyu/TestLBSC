@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="#ffffffff"
     >
 	<LinearLayout
+		android:layout_weight="1"
+		android:id="@+id/placelist_titlebar"
 		android:orientation="horizontal"
 		android:layout_width="fill_parent"
     	android:layout_height="wrap_content"
+    	android:layout_alignParentTop="true"    	
 		>	
 		<ImageView
 			android:layout_width = "wrap_content"
@@ -33,15 +36,24 @@
 				/>
 		</LinearLayout>
 	</LinearLayout>	
+	<GridView 
+		android:id="@+id/GridView_toolbar"
+		android:layout_weight="1"
+		android:layout_height="wrap_content" 
+		android:layout_width="fill_parent"
+		android:layout_alignParentBottom="true">
+		</GridView>
 	<ListView
 		android:id="@android:id/list"
+		android:layout_below="@id/placelist_titlebar"
+		android:layout_above="@id/GridView_toolbar"
 		android:layout_width="fill_parent" 
 		android:layout_height="wrap_content"
 		android:drawSelectorOnTop="false"
 		android:textColor="#444444"
 		android:divider = "#000000"
+		android:cacheColorHint="#00000000"
 		android:footerDividersEnabled = "false"
 		android:headerDividersEnabled="false" 
-
-		/>
-</LinearLayout>
+		/>	
+</RelativeLayout>

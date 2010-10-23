@@ -2,24 +2,22 @@
 <resources>
     <string name="hello">Hello World, LBSC!</string>
     <string name="app_name">TestLBSC</string>
-    <string-array name="placelist_array">
-        <item>新中关</item>
-        <item>国贸</item>
-        <item>海中市场</item>
-        <item>中关村中学</item>
-        <item>北京理工大学</item>
-        <item>人民大学</item>
-        <item>南门烤翅</item>
-    </string-array>
-<string name="email">Email:</string>
-<string name="password">密码:</string>
-<string name="name">姓名:</string>
-<string name="password_set">设置密码：</string>
-<string name="password_confirm">确认密码:</string>
-<string name="login">登录</string>
-<string name="signup">注册</string>
-<string name="url_login">http://10.0.2.2:3000/mlogin?login=%1$s&amp;password=%2$s</string>
-<string name="url_test">http://10.0.2.2:3000/</string>
-<string name="err_no_email">email地址不能为空;)</string>
-<string name="err_no_password">耍我！密码不能为空;)</string>
+	<string name="email">Email:</string>
+	<string name="password">密码:</string>
+	<string name="name">姓名:</string>
+	<string name="password_set">设置密码：</string>
+	<string name="password_confirm">确认密码:</string>
+	<string name="login">登录</string>
+	<string name="signup">注册</string>
+	<string name="url_login">http://10.0.2.2:3000/mlogin?login=%1$s&amp;password=%2$s</string>
+	<string name="url_hotplace">http://10.0.2.2:3000/place/hot.json</string> 
+	<string name="url_nearbyplace">http://10.0.2.2:3000/place/nearby?lat=%1$s&amp;lng=%2$s</string>
+	<string name="url_favorate_place">http://10.0.2.2:3000/place/tagged.json?user_id=%1$s</string>
+	<string name="place_list1">- 有问题</string>
+	<string name="place_list2">- 待开发</string>
+	<string name="err_no_email">耍我！email地址不能为空;)</string>
+	<string name="err_no_password">耍我！密码不能为空;)</string>
+	<string name="unanswered_count">%1$d\n未解决</string>
+	<string name="activities_count">%1$d\n来访</string>
+	<string name="questions_count">%1$d\n问题</string>
 </resources>
