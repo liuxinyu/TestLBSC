@@ -1,18 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="#ffffffff"
     >
-<ImageView
-	android:layout_width = "fill_parent"
-	android:layout_height = "wrap_content"
-	android:layout_marginTop = "10px"
-	android:adjustViewBounds = "true"
-	android:scaleType = "centerCrop"
-	android:src = "@drawable/logobar"
-	/>
 <GridView
          android:id="@+id/maingrid"
          android:layout_width="fill_parent"
@@ -22,6 +14,17 @@
          android:horizontalSpacing="0dip"
          android:stretchMode="columnWidth"
          android:gravity="center"
-         android:layout_gravity="center"
+         android:layout_centerInParent="true"
          />
-</LinearLayout>
+<ImageView
+	android:layout_above="@id/maingrid"
+	android:layout_width = "fill_parent"
+	android:layout_height = "wrap_content"
+	android:layout_marginTop = "20px"
+	android:layout_marginBottom = "20px"
+	android:adjustViewBounds = "true"
+	android:scaleType = "centerCrop"
+	android:src = "@drawable/logobar"
+	/>
+
+</RelativeLayout>

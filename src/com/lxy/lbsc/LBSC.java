@@ -3,6 +3,7 @@ package com.lxy.lbsc;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,6 +46,12 @@ public class LBSC extends Activity {
                 }
             }
         });
+        
+        //save web home address to preference
+        String webhome = getString(R.string.url_webhome); 
+        SharedPreferences.Editor editor = getPreferences(0).edit();
+        editor.putString("webhome", webhome);
+        editor.commit();
     }
     
     

@@ -9,10 +9,11 @@
 	<string name="password_confirm">确认密码:</string>
 	<string name="login">登录</string>
 	<string name="signup">注册</string>
-	<string name="url_login">http://10.0.2.2:3000/mlogin?login=%1$s&amp;password=%2$s</string>
-	<string name="url_hotplace">http://10.0.2.2:3000/place/hot.json</string> 
-	<string name="url_nearbyplace">http://10.0.2.2:3000/place/nearby?lat=%1$s&amp;lng=%2$s</string>
-	<string name="url_favorate_place">http://10.0.2.2:3000/place/tagged.json?user_id=%1$s</string>
+	<string name="url_webhome">http://10.0.2.2:3000</string>
+	<string name="url_login">/mlogin?login=%1$s&amp;password=%2$s</string>
+	<string name="url_hotplace">/place/hot.json</string> 
+	<string name="url_nearbyplace">/place/nearby?lat=%1$s&amp;lng=%2$s</string>
+	<string name="url_favorate_place">/place/tagged.json?user_id=%1$s</string>	
 	<string name="place_list1">- 有问题</string>
 	<string name="place_list2">- 待开发</string>
 	<string name="err_no_email">耍我！email地址不能为空;)</string>

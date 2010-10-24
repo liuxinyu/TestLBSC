@@ -55,23 +55,5 @@
 	    android:layout_gravity="right"
 	    android:text="@string/login"
 	    />
-	<ImageButton
-		android:id="@+id/button_signupnow"
-		android:layout_width = "fill_parent"
-		android:layout_height = "wrap_content"
-		android:layout_marginTop = "50px"
-		android:src = "@drawable/button_signupnow"
-		android:background="#00000000"
-		android:adjustViewBounds="true"
-		/>	
-	<ImageButton
-		android:id="@+id/button_loginnow"
-		android:layout_width = "fill_parent"
-		android:layout_height = "wrap_content"
-		android:layout_marginTop = "20px"
-		android:src = "@drawable/button_loginnow"
-		android:background="#00000000"
-		android:adjustViewBounds="true"
-		/>
-	
+
 </LinearLayout>

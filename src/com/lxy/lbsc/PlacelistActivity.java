@@ -16,6 +16,7 @@ import org.json.JSONObject;
 import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Message;
 import android.util.Log;
@@ -76,8 +77,10 @@ public class PlacelistActivity extends ListActivity {
         	}else{
         		// something but be wrong!!!
         	}
-        	
-        	HttpGet getMethod=new HttpGet(url); 	
+        	SharedPreferences prefs = getPreferences(0); 
+            String webhome = prefs.getString("webhome", "http://10.0.2.2:3000"); 
+            url = webhome + url; 
+            HttpGet getMethod=new HttpGet(url); 	
         	
             try {
                 //1. query webserver
