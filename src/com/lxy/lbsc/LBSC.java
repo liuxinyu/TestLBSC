@@ -10,12 +10,9 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.AdapterView; 
 import android.widget.Toast;
 
@@ -39,6 +36,9 @@ public class LBSC extends Activity {
                     startActivity(intent);
                 }else if (position==2){ // me 
                 	Intent intent = new Intent(LBSC.this, login_mgmt.class);
+                    startActivity(intent);
+                }else if (position==1){ // question
+                	Intent intent = new Intent(LBSC.this, QuestionList.class);
                     startActivity(intent);
                 }
                 else{

@@ -14,6 +14,8 @@
         </activity>
 		<activity android:name=".PlacelistActivity">		
         </activity>
+        <activity android:name=".QuestionList">		
+        </activity>
         <activity android:name=".login_mgmt">		
         </activity>
     </application>
