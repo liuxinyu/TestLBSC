@@ -13,21 +13,26 @@ public final class R {
     public static final class drawable {
         public static final int bar_back=0x7f020000;
         public static final int bar_faverate=0x7f020001;
-        public static final int bar_hotplace=0x7f020002;
-        public static final int bar_nearby=0x7f020003;
-        public static final int bar_search=0x7f020004;
-        public static final int btn_place_2=0x7f020005;
-        public static final int btn_question_blue=0x7f020006;
-        public static final int grid_me=0x7f020007;
-        public static final int grid_place=0x7f020008;
-        public static final int grid_question=0x7f020009;
-        public static final int grid_setting=0x7f02000a;
-        public static final int icon=0x7f02000b;
-        public static final int icon_listheader=0x7f02000c;
-        public static final int icon_place=0x7f02000d;
-        public static final int logobar=0x7f02000e;
-        public static final int tab_place=0x7f02000f;
-        public static final int tab_question=0x7f020010;
+        public static final int bar_faverate_dark=0x7f020002;
+        public static final int bar_faverate_light=0x7f020003;
+        public static final int bar_hotplace=0x7f020004;
+        public static final int bar_hotplace_dark=0x7f020005;
+        public static final int bar_nearby=0x7f020006;
+        public static final int bar_nearby_dark=0x7f020007;
+        public static final int bar_search=0x7f020008;
+        public static final int btn_place_2=0x7f020009;
+        public static final int btn_question_blue=0x7f02000a;
+        public static final int grid_me=0x7f02000b;
+        public static final int grid_place=0x7f02000c;
+        public static final int grid_question=0x7f02000d;
+        public static final int grid_setting=0x7f02000e;
+        public static final int icon=0x7f02000f;
+        public static final int icon_listheader=0x7f020010;
+        public static final int icon_place=0x7f020011;
+        public static final int icon_place2=0x7f020012;
+        public static final int logobar=0x7f020013;
+        public static final int tab_place=0x7f020014;
+        public static final int tab_question=0x7f020015;
     }
     public static final class id {
         public static final int GridView_toolbar=0x7f050009;
@@ -38,6 +43,7 @@ public final class R {
         public static final int edit_email1=0x7f050003;
         public static final int edit_password1=0x7f050004;
         public static final int icon_place=0x7f05000a;
+        public static final int icon_place2=0x7f050011;
         public static final int item_image=0x7f050001;
         public static final int item_text=0x7f050002;
         public static final int maingrid=0x7f050006;
@@ -46,8 +52,8 @@ public final class R {
         public static final int place_number_of_questions=0x7f05000d;
         public static final int place_number_of_questions2=0x7f05000c;
         public static final int placelist_titlebar=0x7f050007;
-        public static final int question_name=0x7f050011;
-        public static final int question_number_of_answers=0x7f050012;
+        public static final int question_name=0x7f050012;
+        public static final int question_number_of_answers=0x7f050014;
         public static final int question_number_of_votes=0x7f050013;
         public static final int questionlist_titlebar=0x7f05000f;
     }

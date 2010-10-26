@@ -36,9 +36,9 @@ public class ImageAdapter extends BaseAdapter {
         return imageView;
     }
     private Integer[] mThumbIds = {
-            R.drawable.bar_hotplace, 
-            R.drawable.bar_nearby,
-            R.drawable.bar_faverate,
+            R.drawable.bar_hotplace_dark, 
+            R.drawable.bar_nearby_dark,
+            R.drawable.bar_faverate_dark,
             R.drawable.bar_back,
             R.drawable.bar_search
     };

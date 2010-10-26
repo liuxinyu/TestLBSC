@@ -76,7 +76,7 @@ public class QuestionList extends ListActivity {
 		toolbarGrid.setNumColumns(5);// 设置每行列数
 		toolbarGrid.setGravity(Gravity.CENTER);// 位置居中
 		toolbarGrid.setVerticalSpacing(10);// 垂直间隔
-		toolbarGrid.setHorizontalSpacing(10);// 水平间隔
+		//toolbarGrid.setHorizontalSpacing(10);// 水平间隔
 		toolbarGrid.setAdapter(new ImageAdapter(this));
 		toolbarGrid.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
@@ -140,7 +140,7 @@ public class QuestionList extends ListActivity {
 		public boolean isEnabled(int position) {
 			boolean enabled = true; 			
 			QuestionModel model=getModel(position);
-			if(model.toString().startsWith("-")){
+			if(model.question_id==0){
 				enabled = false; 
 			}
 			return enabled; 
@@ -153,38 +153,40 @@ public class QuestionList extends ListActivity {
 			View row=convertView;
 			QuestionModel model=getModel(position);
 			boolean isHeader = false; 
-			if(model.toString().startsWith("-")){
+			if(model.question_id==0){
 				isHeader = true; 
 			}			
 			if (row==null) {				
 				LayoutInflater inflater=getLayoutInflater();
-				row=inflater.inflate(R.layout.placerow, parent, false);
-				row.setTag(R.id.icon_place, row.findViewById(R.id.icon_place));
+				row=inflater.inflate(R.layout.questionrow, parent, false);
+				row.setTag(R.id.icon_place2, row.findViewById(R.id.icon_place2));
 				row.setTag(R.id.question_name, row.findViewById(R.id.question_name));
 				row.setTag(R.id.question_number_of_answers, row.findViewById(R.id.question_number_of_answers));
 				row.setTag(R.id.question_number_of_votes, row.findViewById(R.id.question_number_of_votes));
 			}
-			ImageView img = (ImageView)row.getTag(R.id.icon_place); 
+			ImageView img = (ImageView)row.getTag(R.id.icon_place2); 
 			TextView label1=(TextView)row.getTag(R.id.question_name);
 			TextView label2=(TextView)row.getTag(R.id.question_number_of_answers);	
 			TextView label3=(TextView)row.getTag(R.id.question_number_of_votes);	
-			label1.setText(model.toString());
-			label2.setText(String.format(getString(R.string.answers_count), model.answered_count));
-			label3.setText(String.format(getString(R.string.votes_count), model.vote_count));
 			Log.i(TAG, "Ok in get/set name label. Position="+position+"Name="+model.toString());
-			/*
 			if(isHeader){
+				img.setVisibility(View.VISIBLE);
+				label1.setText(model.place);
+				label1.setTextColor(0xFF5D1670); 
 				label2.setVisibility(View.INVISIBLE); 
-				label3.setVisibility(View.INVISIBLE); 
-				label4.setVisibility(View.INVISIBLE); 				
-				img.setVisibility(View.INVISIBLE); 
+				label3.setVisibility(View.INVISIBLE);				 
 			}else{
-				// todo: need to judge whether label2/3/4 has value first
+				label2.setText(String.format(getString(R.string.answers_count), model.answered_count));
+				label3.setText(String.format(getString(R.string.votes_count), model.vote_count));
+				img.setVisibility(View.INVISIBLE);
+				label1.setText(model.question);
 				label2.setVisibility(View.VISIBLE); 
-				label3.setVisibility(View.VISIBLE); 
-				label4.setVisibility(View.VISIBLE); 				
-				img.setVisibility(View.VISIBLE); 
-			}*/
+				label3.setVisibility(View.VISIBLE);
+				if (model.answered_count==0){
+					label2.setTextColor(0xFFFFFFFF);
+					label2.setBackgroundColor(0xFF5D1670); 
+				}
+			}
 			return(row);			
 		}
 	}
@@ -219,7 +221,46 @@ public class QuestionList extends ListActivity {
 	}
     
     public class GetQuestionRunnable implements Runnable {
-		public void run() {
+		private void parseQuestionList(String ret){
+			try{
+				JSONArray obj_array = new JSONArray(ret);
+				if (obj_array.length()==0){
+					Log.e(TAG, "ERROR in getting question list");
+					return;
+				}
+    			for(int i=0; i< obj_array.length(); i++){
+    				//Get My JSONObject and grab the String Value that I want.
+	    		    JSONObject obj = obj_array.getJSONObject(i);
+	    		    QuestionModel place = new QuestionModel();
+	    		    place.place = obj.getString("place_name");
+	    		    place.place_id = obj.getInt("place_id");
+	    		    list.add(place); // actually a place name
+	    		    
+	    		    JSONArray q_array = obj.getJSONArray("questions");
+	    		    if (q_array.length()==0){
+	    		    	Log.e(TAG, "Error in getting question in place of "+place.place); 
+	    		    }
+	    		    for(int j=0; j<q_array.length(); j++){
+	    		    	JSONObject q_obj = q_array.getJSONObject(j);
+	    		    	QuestionModel question = new QuestionModel();
+	    		    	question.place = place.place;
+	    		    	question.place_id = place.place_id;
+	    		    	question.question_id = q_obj.getInt("question_id");
+		    		    question.question = q_obj.getString("description");
+		    		    if (question.question.trim().length()==0){
+		    		    	question.question = "Nate, 这里不能空 :)"; 
+		    		    }
+		    		    question.answered_count = q_obj.getInt("answers_count"); 
+		    		    //question.vote_count = q_obj.getInt("votes_sum"); 
+		    		    list.add(question);
+	    		    }	    		    
+    			}   	    		
+			}catch (JSONException e){
+				Log.e(TAG, e.toString());
+			}			
+		}
+		
+    	public void run() {
         	String url = getString(R.string.url_question_hot);;
         	list.clear(); 
         	if (mQuestionlistMode==TOOLBAR_ITEM_HOT){
@@ -243,33 +284,8 @@ public class QuestionList extends ListActivity {
             	ResponseHandler<String> responseHandler=new BasicResponseHandler();        			
             	String responseBody=client.execute(getMethod, responseHandler);
     			Log.i(TAG, responseBody);
-    			//2. parse JSON
-    			JSONArray results = new JSONArray(responseBody);
-    			JSONObject obj = results.getJSONObject(0);
-    			int result = obj.getInt("result"); 
-    			if (result==1){ // got questions correctly    			
-	    			for(int i=1; i< results.length(); i++){
-	    		        try{
-	    		            //Get My JSONObject and grab the String Value that I want.
-	    		        	obj = results.getJSONObject(i);
-	    		        	QuestionModel question = new QuestionModel();
-	    		        	question.place = obj.getString("place_name");
-	    		        	question.place_id = obj.getInt("place_id");
-	    		        	question.question_id = obj.getInt("question_id");
-	    		        	question.question = obj.getString("description");
-	    		        	question.answered_count = obj.getInt("answers_count"); 
-	    		        	question.vote_count = obj.getInt("votes_sum"); 
-	    		        	list.add(question);
-	    		        }catch(JSONException e){
-	    		        }
-	    		    }
-	    			if (mQuestionlistMode==TOOLBAR_ITEM_NEARBY){
-	    				//list.add(new PlaceModel(getString(R.string.place_list2)));
-	    			}
-    			}else{
-    				// some error in got questions
-    				Log.e(TAG, "ERROR in getting question list");
-    			}
+    			parseQuestionList(responseBody); 
+    			
                 //3. to notify refress list
             	handler.sendMessage(handler.obtainMessage());
             }
@@ -283,7 +299,7 @@ public class QuestionList extends ListActivity {
 	class QuestionModel {
 		String place;
 		int place_id=0;
-		String question;
+		String question="";
 		int question_id;
 		int answered_count=0;
 		int vote_count=0;
