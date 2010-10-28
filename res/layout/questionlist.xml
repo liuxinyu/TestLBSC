@@ -15,7 +15,7 @@
 		>	
 		<ImageView
 			android:layout_width = "wrap_content"
-			android:layout_height = "fill_parent"
+			android:layout_height = "wrap_content"
 			android:adjustViewBounds = "true"
 			android:layout_gravity="left"
 			android:src = "@drawable/btn_question_blue"
@@ -29,7 +29,7 @@
 			<ImageButton
 				android:id = "@+id/button_place"
 				android:layout_width = "wrap_content"
-				android:layout_height = "fill_parent"
+				android:layout_height = "wrap_content"
 				android:src = "@drawable/btn_place_2"
 				android:background="#00000000"
 				android:adjustViewBounds="true"
@@ -45,11 +45,11 @@
 		/>		
 	<ListView
 		android:id="@android:id/list"
-		android:layout_below="@id/placelist_titlebar"
+		android:layout_below="@id/questionlist_titlebar"
 		android:layout_above="@id/GridView_toolbar"
 		android:layout_width="fill_parent" 
 		android:layout_height="wrap_content"
-		android:drawSelectorOnTop="false"
+		android:drawSelectorOnTop="true"
 		android:textColor="#444444"
 		android:divider = "#000000"
 		android:cacheColorHint="#00000000"

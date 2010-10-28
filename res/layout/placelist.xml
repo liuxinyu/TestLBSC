@@ -49,7 +49,7 @@
 		android:layout_above="@id/GridView_toolbar"
 		android:layout_width="fill_parent" 
 		android:layout_height="wrap_content"
-		android:drawSelectorOnTop="false"
+		android:drawSelectorOnTop="true"
 		android:textColor="#444444"
 		android:divider = "#000000"
 		android:cacheColorHint="#00000000"

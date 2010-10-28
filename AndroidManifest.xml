@@ -12,12 +12,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-		<activity android:name=".PlacelistActivity">		
-        </activity>
-        <activity android:name=".QuestionList">		
-        </activity>
-        <activity android:name=".login_mgmt">		
-        </activity>
+		<activity android:name=".PlacelistActivity"></activity>
+        <activity android:name=".QuestionList"></activity>
+        <activity android:name=".login_mgmt"></activity>
+        <activity android:name=".AskQuestionActivity"></activity>
     </application>
 
 

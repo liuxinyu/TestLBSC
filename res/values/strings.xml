@@ -17,6 +17,9 @@
 	<string name="url_question_hot">/question/hot.json</string> 
 	<string name="place_list1">- 有问题</string>
 	<string name="place_list2">- 待开发</string>
+	<string name="place_list_test1">理工科技大厦</string>
+	<string name="place_list_test2">嘉禾一品（魏公村店）</string>
+	<string name="place_list_test3">北京外国语大学</string>
 	<string name="err_no_email">耍我！email地址不能为空;)</string>
 	<string name="err_no_password">耍我！密码不能为空;)</string>
 	<string name="unanswered_count">%1$d\n未解决</string>
@@ -24,5 +27,6 @@
 	<string name="questions_count">%1$d\n问题</string>
 	<string name="answers_count">%1$d\n回答</string>
 	<string name="votes_count">%1$d\n投票</string>
+	<string name="question_1st">还没有问题，做第一个提问者？</string>
 	<string name="json_test">[{"result":1},{"question_id":4,"place_id":4,"votes_sum":null,"place_name":"\u4e2d\u5173\u6751\u533b\u9662","answers_count":10,"description":" \u6d4b\u8bd55"},{"question_id":2,"place_id":4,"votes_sum":null,"place_name":"\u4e2d\u5173\u6751\u533b\u9662","answers_count":6,"description":""},{"question_id":1,"place_id":4,"votes_sum":null,"place_name":"\u4e2d\u5173\u6751\u533b\u9662","answers_count":4,"description":" \u6d4b\u8bd5\u4e00\u4e0b\u770b\u770b\uff1f"},{"question_id":3,"place_id":4,"votes_sum":null,"place_name":"\u4e2d\u5173\u6751\u533b\u9662","answers_count":0,"description":" \u6d4b\u8bd5\u4e00\u4e0b4"},{"question_id":5,"place_id":4,"votes_sum":null,"place_name":"\u4e2d\u5173\u6751\u533b\u9662","answers_count":0,"description":" \u6d4b\u8bd56"},{"question_id":7,"place_id":4,"votes_sum":null,"place_name":"\u4e2d\u5173\u6751\u533b\u9662","answers_count":0,"description":" f\u963f\u8fea\u4e8b\u53d1\u65f6\u4e1c\u65b9"},{"question_id":8,"place_id":4,"votes_sum":null,"place_name":"\u4e2d\u5173\u6751\u533b\u9662","answers_count":0,"description":" "},{"question_id":6,"place_id":9,"votes_sum":null,"place_name":"\u661f\u5df4\u514b\u5496\u5561\u5e97","answers_count":0,"description":" \u6d4b\u8bd5\u661f\u5df4\u514b"}]</string>
 </resources>

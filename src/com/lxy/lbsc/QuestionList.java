@@ -50,6 +50,7 @@ public class QuestionList extends ListActivity {
 	@Override
 	public void handleMessage(Message msg) {
         	setListAdapter(new QuestionlistAdapter(list));
+        	getListView().setOnItemSelectedListener(listener);
 	    }
 	}; 	
 	
@@ -67,6 +68,8 @@ public class QuestionList extends ListActivity {
             @Override  
             public void onClick(View v) {  
             	Toast.makeText(QuestionList.this, "TO list place", Toast.LENGTH_SHORT).show();
+            	Intent intent = new Intent(QuestionList.this, PlacelistActivity.class);
+                startActivity(intent);
             }  
         }); 
 		
@@ -215,6 +218,25 @@ public class QuestionList extends ListActivity {
     public void onListItemClick(ListView parent, View v, int position, long id) {
     	Toast.makeText(this, getModel(position).toString(),2000).show();
     }
+    
+    AdapterView.OnItemSelectedListener listener=new AdapterView.OnItemSelectedListener() {
+		View lastRow=null;
+		
+		public void onItemSelected(AdapterView<?> parent, View view, int position,long id) {
+			if (lastRow!=null) {
+				lastRow.setBackgroundColor(0x00000000);
+			}			
+			view.setBackgroundResource(R.layout.active_row);
+			lastRow=view;
+		}
+		
+		public void onNothingSelected(AdapterView<?> parent) {
+			if (lastRow!=null) {
+				lastRow.setBackgroundColor(0x00000000);
+				lastRow=null;
+			}
+		}
+	};
 	
     private QuestionModel getModel(int position) {
 		return(((QuestionlistAdapter)getListAdapter()).getItem(position));

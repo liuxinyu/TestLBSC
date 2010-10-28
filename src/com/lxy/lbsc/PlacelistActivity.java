@@ -101,6 +101,9 @@ public class PlacelistActivity extends ListActivity {
     		    }
     			if (mPlacelistMode==TOOLBAR_ITEM_NEARBY){
     				list.add(new PlaceModel(getString(R.string.place_list2)));
+    				list.add(new PlaceModel(getString(R.string.place_list_test1)));
+    				list.add(new PlaceModel(getString(R.string.place_list_test2)));
+    				list.add(new PlaceModel(getString(R.string.place_list_test3)));
     			}
                 //3. to notify refress list
             	handler.sendMessage(handler.obtainMessage());
@@ -125,6 +128,8 @@ public class PlacelistActivity extends ListActivity {
             @Override  
             public void onClick(View v) {  
             	Toast.makeText(PlacelistActivity.this, "TO list questions", Toast.LENGTH_SHORT).show();
+            	Intent intent = new Intent(PlacelistActivity.this, QuestionList.class);
+                startActivity(intent);
             }  
         }); 
 		
@@ -212,7 +217,15 @@ public class PlacelistActivity extends ListActivity {
     
     @Override
     public void onListItemClick(ListView parent, View v, int position, long id) {
-    	Toast.makeText(this, getModel(position).toString(),2000).show();
+    	PlaceModel place = getModel(position);     	
+    	if(place.activities_count>0){
+    		Toast.makeText(this, place.toString()+ "-去问题列表视图",2000).show(); 
+    	}else{
+    		Toast.makeText(this, place.toString()+ "-去提问啦",2000).show();
+    		Intent intent = new Intent(PlacelistActivity.this, AskQuestionActivity.class);
+            startActivity(intent);
+    	}
+    	
     }
 	
     private PlaceModel getModel(int position) {

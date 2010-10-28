@@ -13,13 +13,11 @@
 		android:adjustViewBounds = "true"
 		android:src = "@drawable/icon_place2"
 		android:layout_alignParentLeft="true"
-		android:layout_alignParentTop="true"
 		/>
 	<TextView
 		android:id="@+id/question_name"
 		android:layout_toRightOf="@id/icon_place2"
 		android:paddingLeft="2px"
-		android:paddingRight="2px"
 		android:textSize="16sp"
 		android:layout_width="180px"
 		android:layout_height="fill_parent"
@@ -28,7 +26,6 @@
 		android:textStyle="bold"
 		android:textColor="#515a51"
 		android:ellipsize="marquee"
-		android:layout_alignParentTop="true"
 		/>	
 	<TextView
 		android:id="@+id/question_number_of_votes"
@@ -51,7 +48,6 @@
 		android:textColor="#3C3C3C"
 		android:background="#E3E3E3"
 		android:layout_alignParentRight="true"
-		android:layout_alignParentTop="true"
 		android:layout_weight="1"
 		/>				
 	<TextView
@@ -59,7 +55,7 @@
 		android:layout_toLeftOf="@id/question_number_of_votes"
 		android:layout_marginLeft="2px"
 		android:layout_marginRight="0px"
-		android:layout_marginTop="1px"
+		android:layout_marginTop="2px"
 		android:paddingLeft="2px"
 		android:paddingRight="2px"
 		android:paddingTop="2px"
@@ -75,7 +71,6 @@
 		android:textStyle="bold"
 		android:textColor="#E1E818"
 		android:background="#75845C"
-		android:layout_alignParentTop="true"
 		android:layout_weight="1"
 		/>
 </RelativeLayout>
