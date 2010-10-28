@@ -14,6 +14,7 @@
 	<string name="url_hotplace">/place/hot.json</string> 
 	<string name="url_nearbyplace">/place/nearby?lat=%1$s&amp;lng=%2$s</string>
 	<string name="url_favorate_place">/place/tagged.json?user_id=%1$s</string>	
+	<string name="url_submit_question">/action?place_id=%1$s&amp;user_id=%2$s&amp;points=%3$s&amp;action_id=1&amp;question=%4$s</string>
 	<string name="url_question_hot">/question/hot.json</string> 
 	<string name="place_list1">- 有问题</string>
 	<string name="place_list2">- 待开发</string>
@@ -28,5 +29,6 @@
 	<string name="answers_count">%1$d\n回答</string>
 	<string name="votes_count">%1$d\n投票</string>
 	<string name="question_1st">还没有问题，做第一个提问者？</string>
+	<string name="edit_hint">字数少于100字</string>
 	<string name="json_test">[{"result":1},{"question_id":4,"place_id":4,"votes_sum":null,"place_name":"\u4e2d\u5173\u6751\u533b\u9662","answers_count":10,"description":" \u6d4b\u8bd55"},{"question_id":2,"place_id":4,"votes_sum":null,"place_name":"\u4e2d\u5173\u6751\u533b\u9662","answers_count":6,"description":""},{"question_id":1,"place_id":4,"votes_sum":null,"place_name":"\u4e2d\u5173\u6751\u533b\u9662","answers_count":4,"description":" \u6d4b\u8bd5\u4e00\u4e0b\u770b\u770b\uff1f"},{"question_id":3,"place_id":4,"votes_sum":null,"place_name":"\u4e2d\u5173\u6751\u533b\u9662","answers_count":0,"description":" \u6d4b\u8bd5\u4e00\u4e0b4"},{"question_id":5,"place_id":4,"votes_sum":null,"place_name":"\u4e2d\u5173\u6751\u533b\u9662","answers_count":0,"description":" \u6d4b\u8bd56"},{"question_id":7,"place_id":4,"votes_sum":null,"place_name":"\u4e2d\u5173\u6751\u533b\u9662","answers_count":0,"description":" f\u963f\u8fea\u4e8b\u53d1\u65f6\u4e1c\u65b9"},{"question_id":8,"place_id":4,"votes_sum":null,"place_name":"\u4e2d\u5173\u6751\u533b\u9662","answers_count":0,"description":" "},{"question_id":6,"place_id":9,"votes_sum":null,"place_name":"\u661f\u5df4\u514b\u5496\u5561\u5e97","answers_count":0,"description":" \u6d4b\u8bd5\u661f\u5df4\u514b"}]</string>
 </resources>

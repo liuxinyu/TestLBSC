@@ -222,8 +222,13 @@ public class PlacelistActivity extends ListActivity {
     		Toast.makeText(this, place.toString()+ "-去问题列表视图",2000).show(); 
     	}else{
     		Toast.makeText(this, place.toString()+ "-去提问啦",2000).show();
-    		Intent intent = new Intent(PlacelistActivity.this, AskQuestionActivity.class);
-            startActivity(intent);
+    		Intent intent = new Intent();  
+            intent.setClass(PlacelistActivity.this, AskQuestionActivity.class);  
+            Bundle mBundle = new Bundle();  
+            mBundle.putString("place_name", place.place);//压入数据
+            mBundle.putInt("place_id", place.place_id);
+            intent.putExtras(mBundle);  
+            startActivity(intent);    		
     	}
     	
     }
@@ -296,6 +301,7 @@ public class PlacelistActivity extends ListActivity {
 	
     class PlaceModel {
 		String place;
+		int place_id=0;
 		int activities_count=0;
 		int questions_count=0;
 		int unanswered_count=0; 		
