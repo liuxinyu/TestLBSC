@@ -234,7 +234,7 @@ public class QuestionList extends ListActivity {
         	}else{
         		// something but be wrong!!!
         	}
-        	SharedPreferences prefs = getPreferences(0); 
+        	SharedPreferences prefs = getSharedPreferences("data", 0); 
             String webhome = prefs.getString("webhome", "http://10.0.2.2:3000"); 
             url = webhome + url; 
             HttpGet getMethod=new HttpGet(url); 	

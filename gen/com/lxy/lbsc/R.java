@@ -85,15 +85,16 @@ public final class R {
         public static final int questionrow=0x7f030009;
     }
     public static final class string {
-        public static final int activities_count=0x7f040019;
-        public static final int answers_count=0x7f04001b;
+        public static final int activities_count=0x7f04001a;
+        public static final int answers_count=0x7f04001c;
         public static final int app_name=0x7f040001;
-        public static final int edit_hint=0x7f040020;
+        public static final int edit_hint=0x7f040021;
         public static final int email=0x7f040002;
         public static final int err_no_email=0x7f040016;
-        public static final int err_no_password=0x7f040017;
+        public static final int err_no_password=0x7f040018;
+        public static final int err_no_question=0x7f040017;
         public static final int hello=0x7f040000;
-        public static final int json_test=0x7f040021;
+        public static final int json_test=0x7f040022;
         public static final int login=0x7f040007;
         public static final int name=0x7f040004;
         public static final int password=0x7f040003;
@@ -104,12 +105,12 @@ public final class R {
         public static final int place_list_test1=0x7f040013;
         public static final int place_list_test2=0x7f040014;
         public static final int place_list_test3=0x7f040015;
-        public static final int qna_notes=0x7f04001e;
-        public static final int qna_notes2=0x7f04001f;
-        public static final int question_1st=0x7f04001d;
-        public static final int questions_count=0x7f04001a;
+        public static final int qna_notes=0x7f04001f;
+        public static final int qna_notes2=0x7f040020;
+        public static final int question_1st=0x7f04001e;
+        public static final int questions_count=0x7f04001b;
         public static final int signup=0x7f040008;
-        public static final int unanswered_count=0x7f040018;
+        public static final int unanswered_count=0x7f040019;
         public static final int url_favorate_place=0x7f04000d;
         public static final int url_hotplace=0x7f04000b;
         public static final int url_login=0x7f04000a;
@@ -118,6 +119,6 @@ public final class R {
         public static final int url_question_hot=0x7f04000f;
         public static final int url_submit_question=0x7f04000e;
         public static final int url_webhome=0x7f040009;
-        public static final int votes_count=0x7f04001c;
+        public static final int votes_count=0x7f04001d;
     }
 }

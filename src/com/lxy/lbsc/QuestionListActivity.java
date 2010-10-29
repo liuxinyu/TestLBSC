@@ -5,7 +5,6 @@ package com.lxy.lbsc;
 
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
-
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.ResponseHandler;
 import org.apache.http.client.methods.HttpGet;
@@ -14,9 +13,6 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import com.lxy.lbsc.PlacelistActivity.GetPlaceRunnable;
-
 import android.app.ListActivity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -142,26 +138,23 @@ public class QuestionListActivity extends ListActivity {
     	public void run() {
         	String url = String.format(getString(R.string.url_newquestion_at_place), mPlaceId);
         	list.clear(); 
-        	SharedPreferences prefs = getPreferences(0); 
+        	SharedPreferences prefs = getSharedPreferences("data", 0); 
             String webhome = prefs.getString("webhome", "http://10.0.2.2:3000"); 
             url = webhome + url; 
             HttpGet getMethod=new HttpGet(url); 	
         	
             try {
-                //1. query webserver
             	ResponseHandler<String> responseHandler=new BasicResponseHandler();        			
             	String responseBody=client.execute(getMethod, responseHandler);
     			Log.i(TAG, responseBody);
     			parseQuestionList(responseBody);     			
-                //3. to notify refress list
             	handler.sendMessage(handler.obtainMessage());
             }
             catch (Throwable t) {
-                // just end the background thread
             	Log.e(TAG, t.toString());
             }            
         }
 	}
-    
+   
     private static final String TAG = "LBSC";
 }

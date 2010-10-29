@@ -49,7 +49,7 @@ public class LBSC extends Activity {
         
         //save web home address to preference
         String webhome = getString(R.string.url_webhome); 
-        SharedPreferences.Editor editor = getPreferences(0).edit();
+        SharedPreferences.Editor editor = getSharedPreferences("data", 0).edit();
         editor.putString("webhome", webhome);
         editor.commit();
     }

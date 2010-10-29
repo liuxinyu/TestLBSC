@@ -46,7 +46,7 @@ public class login_mgmt extends Activity {
             }  
         }); 
 		
-        SharedPreferences prefs = getPreferences(0); 
+        SharedPreferences prefs = getSharedPreferences("data", 0); 
         int uid = prefs.getInt("uid", 0);
         String token = prefs.getString("token", null); 
         if (uid!=0){
@@ -70,8 +70,8 @@ public class login_mgmt extends Activity {
 			return;
 		}
 		
-		SharedPreferences prefs = getPreferences(0); 
-        String webhome = prefs.getString("webhome", null); 
+		SharedPreferences prefs = getSharedPreferences("data", 0); 
+        String webhome = prefs.getString("webhome", "http://10.0.2.2:3000"); 
 		String url=webhome + String.format(format, email, password);
 		HttpGet getMethod=new HttpGet(url);
 		try {
@@ -89,14 +89,15 @@ public class login_mgmt extends Activity {
 				String token = obj.getString("m_token");
 				Toast.makeText(this, "Login ok. u_id="+uid+" token="+token,4000).show();
 				// todo: save user id and token to preference
-				SharedPreferences.Editor editor = getPreferences(0).edit();
+				SharedPreferences.Editor editor = getSharedPreferences("data", 0).edit();
 		        editor.putInt("uid", uid);
 		        editor.putString("token", token);
-		        editor.commit();				
+		        editor.commit();		
+		        finish();		        
 			}else{
 				Toast.makeText(this, "Login failed",4000).show();
 				// to clear the token
-				SharedPreferences.Editor editor = getPreferences(0).edit();
+				SharedPreferences.Editor editor = getSharedPreferences("data", 0).edit();
 		        editor.putInt("uid", 0);
 		        editor.putString("token", "");
 		        editor.commit();

@@ -75,7 +75,7 @@ public class PlacelistActivity extends ListActivity {
         	}else{
         		// something but be wrong!!!
         	}
-        	SharedPreferences prefs = getPreferences(0); 
+        	SharedPreferences prefs = getSharedPreferences("data", 0); 
             String webhome = prefs.getString("webhome", "http://10.0.2.2:3000"); 
             url = webhome + url; 
             HttpGet getMethod=new HttpGet(url); 	
@@ -219,7 +219,7 @@ public class PlacelistActivity extends ListActivity {
     @Override
     public void onListItemClick(ListView parent, View v, int position, long id) {
     	PlaceModel place = getModel(position);     	
-    	if(place.activities_count>0){
+    	if(place.questions_count>0){
     		Toast.makeText(this, place.toString()+ "-去问题列表视图",2000).show(); 
     		Intent intent = new Intent();  
             intent.setClass(PlacelistActivity.this, QuestionListActivity.class);  
@@ -237,8 +237,7 @@ public class PlacelistActivity extends ListActivity {
             mBundle.putInt("place_id", place.place_id);
             intent.putExtras(mBundle);  
             startActivity(intent);    		
-    	}
-    	
+    	}    	
     }
 	
     private PlaceModel getModel(int position) {
