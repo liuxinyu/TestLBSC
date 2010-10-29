@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#ffffffff"
+    >
+	<ImageView
+    		android:id="@+id/qna_titlebar"
+			android:layout_width = "wrap_content"
+			android:layout_height = "wrap_content"
+			android:adjustViewBounds = "true"
+			android:layout_gravity="left"
+			android:src = "@drawable/btn_qna"
+			android:layout_alignParentTop="true"
+			/>	
+	<TextView
+		android:id="@+id/qna_notes"
+		android:layout_below="@id/qna_titlebar"
+		android:layout_marginLeft="2px"
+		android:layout_marginTop="5px"
+		android:textSize="16sp"
+		android:layout_width = "wrap_content"
+		android:layout_height="wrap_content"
+		android:gravity="left|top"
+		android:text="@string/qna_notes"
+		android:textStyle="bold"
+		android:textColor="#5D1670"
+		/>
+	<RelativeLayout
+		android:id="@+id/qna_toolbar"
+		android:orientation="horizontal"
+		android:layout_width="fill_parent"
+    	android:layout_height="32px"
+    	android:layout_alignParentBottom="true"
+		>	
+		<ImageButton
+				android:id = "@+id/btn_faverate"
+				android:layout_width = "wrap_content"
+				android:layout_height = "fill_parent"
+				android:layout_alignParentLeft="true"
+				android:layout_alignParentBottom="true"
+				android:layout_alignParentTop="true"
+				android:src = "@drawable/btn_faverate"
+				android:background="#00000000"
+				android:adjustViewBounds="true"
+				/>
+		<ImageButton
+				android:id = "@+id/btn_question_submit"
+				android:layout_width = "wrap_content"
+				android:layout_height = "fill_parent"
+				android:layout_alignParentRight="true"
+				android:layout_alignParentBottom="true"
+				android:layout_alignParentTop="true"
+				android:layout_weight = "1"
+				android:src = "@drawable/btn_question_submit"
+				android:background="#00000000"
+				android:adjustViewBounds="true"
+				/>
+		<TextView
+			android:id="@+id/question_placename"
+			android:layout_marginLeft="2px"
+			android:layout_marginRight="2px"
+			android:layout_toRightOf = "@id/btn_faverate" 
+			android:layout_toLeftOf = "@id/btn_question_submit"
+			android:textSize="16sp"
+			android:layout_width = "fill_parent"
+			android:layout_height="fill_parent"
+			android:height="48px"
+			android:layout_gravity="center"
+			android:layout_alignParentBottom="true"
+			android:layout_alignParentTop="true"
+			android:gravity="center"
+			android:text="place name here"
+			android:textColor="#FFFFFF"
+			android:background="#5D1670"
+			/>		
+	</RelativeLayout>	
+	<LinearLayout
+		android:id="@+id/qna_newquestions"
+		android:orientation="horizontal"
+		android:layout_width="fill_parent"
+    	android:layout_height="wrap_content"
+    	android:layout_above="@id/qna_toolbar"
+		>	
+		<ImageView
+			android:layout_width = "wrap_content"
+			android:layout_height = "wrap_content"
+			android:adjustViewBounds = "true"
+			android:layout_gravity="left"
+			android:src = "@drawable/icon_ask_question"
+			android:layout_alignParentTop="true"
+			/>				
+		<EditText
+			android:id="@+id/edit_question"
+			android:layout_marginLeft="5px"
+			android:textSize="16sp"
+			android:layout_width = "fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginRight = "5px"
+			android:gravity="left|top"
+			android:textStyle="bold"
+			android:lines="2"
+			android:hint="@string/edit_hint"
+			android:textColor="#5D1670"
+			/>	
+	</LinearLayout>	
+	<TextView
+		android:id="@+id/qna_notes2"
+		android:layout_above="@id/qna_newquestions"
+		android:layout_marginLeft="2px"
+		android:layout_marginTop="5px"
+		android:textSize="16sp"
+		android:layout_width = "wrap_content"
+		android:layout_height="wrap_content"
+		android:gravity="left|top"
+		android:text="@string/qna_notes2"
+		android:textStyle="bold"
+		android:textColor="#5D1670"
+		/>	
+	<ListView
+		android:id="@android:id/list"
+		android:layout_below="@id/qna_notes"
+		android:layout_above="@id/qna_notes2"
+		android:layout_width="fill_parent" 
+		android:layout_height="wrap_content"
+		android:drawSelectorOnTop="true"
+		android:textColor="#444444"
+		android:divider = "#000000"
+		android:cacheColorHint="#00000000"
+		android:footerDividersEnabled = "false"
+		android:headerDividersEnabled="false" 
+		/>	
+</RelativeLayout>

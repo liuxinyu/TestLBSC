@@ -92,6 +92,7 @@ public class PlacelistActivity extends ListActivity {
     		            //Get My JSONObject and grab the String Value that I want.
     		        	JSONObject obj = results.getJSONObject(i);
     		        	PlaceModel place = new PlaceModel(obj.getString("place_name")); 
+    		        	place.place_id = obj.getInt("place_id");
     		        	place.activities_count = obj.getInt("activities_count"); 
     		        	place.questions_count = obj.getInt("questions_count"); 
     		        	place.unanswered_count = obj.getInt("unanswered_count"); 
@@ -195,7 +196,7 @@ public class PlacelistActivity extends ListActivity {
 		});
 	}
 	
-		@Override
+	@Override
 	public void onStart() {
 		super.onStart();
 		//to-do: to query web service for place list, and parse JSON file. 		
@@ -220,6 +221,13 @@ public class PlacelistActivity extends ListActivity {
     	PlaceModel place = getModel(position);     	
     	if(place.activities_count>0){
     		Toast.makeText(this, place.toString()+ "-去问题列表视图",2000).show(); 
+    		Intent intent = new Intent();  
+            intent.setClass(PlacelistActivity.this, QuestionListActivity.class);  
+            Bundle mBundle = new Bundle();  
+            mBundle.putString("place_name", place.place);//压入数据
+            mBundle.putInt("place_id", place.place_id);
+            intent.putExtras(mBundle);  
+            startActivity(intent);    	
     	}else{
     		Toast.makeText(this, place.toString()+ "-去提问啦",2000).show();
     		Intent intent = new Intent();  

@@ -46,7 +46,6 @@ public class AskQuestionActivity extends Activity {
             public void onClick(View v) {  
             	Toast.makeText(AskQuestionActivity.this, "To submit question", Toast.LENGTH_SHORT).show();            	
             }  
-        }); 
-		
+        }); 		
 	}
 }
