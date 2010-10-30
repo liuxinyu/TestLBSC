@@ -136,7 +136,11 @@ public class QuestionListActivity extends ListActivity {
 					Log.e(TAG, "ERROR in getting question list");
 					return;
 				}
-    			for(int i=0; i< obj_array.length(); i++){
+				int ret1 = obj_array.getJSONObject(0).getInt("result");
+    			if (ret1!=1){ // return 'result=0' from server. 
+    				return; 
+    			}  
+    			for(int i=1; i< obj_array.length(); i++){
 	    		    JSONObject obj = obj_array.getJSONObject(i);
 	    		    QuestionModel question = new QuestionModel();
     		    	question.place = mPlaceName;

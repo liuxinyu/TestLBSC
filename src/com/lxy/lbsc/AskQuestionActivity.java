@@ -4,14 +4,12 @@
 package com.lxy.lbsc;
 
 import java.util.concurrent.atomic.AtomicBoolean;
-
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.ResponseHandler;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
 import android.widget.EditText; 
 import android.app.Activity;
@@ -90,7 +88,7 @@ public class AskQuestionActivity extends Activity {
                 }
             	Toast.makeText(AskQuestionActivity.this, "To submit question", Toast.LENGTH_SHORT).show(); 
             	isRunning.set(true);
-        		Thread background=new Thread(new SubmitQuestionRunnable(str.trim(),uid, mPlaceId )) ;
+        		Thread background=new Thread(new SubmitQuestionRunnable(str.trim(),uid,token, mPlaceId )) ;
                 background.start();
             }  
         }); 		
@@ -110,34 +108,39 @@ public class AskQuestionActivity extends Activity {
 	public class SubmitQuestionRunnable implements Runnable {
 		private String mQuestion=null;
 		private int mUid=0;
+		private String mToken=null; 
 		private int mPlaceId=0;
-		public SubmitQuestionRunnable(String question, int uid, int placeid){
+		public SubmitQuestionRunnable(String question, int uid, String token, int placeid){
 			mQuestion=question; 
 			mUid=uid;
 			mPlaceId=placeid; 
+			mToken=token; 
 		}
 		public void run() {
-        	String url = String.format(getString(R.string.url_submit_question), mPlaceId, mUid, 5, mQuestion); 
+        	String url = String.format(getString(R.string.url_submit_question), mPlaceId, mUid, mToken, 5, mQuestion); 
         	SharedPreferences prefs = getSharedPreferences("data", 0); 
             String webhome = prefs.getString("webhome", "http://10.0.2.2:3000"); 
             url = webhome + url; 
+            url = url.replaceAll(" ", "%20");
+            url = url.replaceAll("\n", "%20");
             HttpGet getMethod=new HttpGet(url); 	        	
             try {
                 ResponseHandler<String> responseHandler=new BasicResponseHandler();        			
     			String responseBody=client.execute(getMethod, responseHandler);
     			Log.i(TAG, responseBody);
     			//2. parse JSON
-    			JSONArray results = new JSONArray(responseBody);
+    			// TODO: this might need to change for API change. 
+    			JSONArray results = new JSONArray('['+responseBody+']');
     			JSONObject obj = results.getJSONObject(0);
-    			try{
+    			int result = obj.getInt("status"); 
+    			if (result ==1){
     				int q_id = obj.getInt("question_id"); 
-    				Toast.makeText(AskQuestionActivity.this, "ok. question id="+q_id, Toast.LENGTH_SHORT).show();
+    				//Toast.makeText(AskQuestionActivity.this, "ok. question id="+q_id, Toast.LENGTH_SHORT).show();
     				//TODO: where to go? 
-    			}catch(JSONException e){
-    				Toast.makeText(AskQuestionActivity.this, "faild", Toast.LENGTH_SHORT).show();
-    				//TODO: where to go? 
+    			}else{
+    				//Toast.makeText(AskQuestionActivity.this, "faild", Toast.LENGTH_SHORT).show();
+    				//TODO: where to go?     				
     			}
-    			
                 //3. to notify refress list
             	handler.sendMessage(handler.obtainMessage());
             }
