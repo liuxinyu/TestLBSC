@@ -17,6 +17,7 @@
         <activity android:name=".login_mgmt"></activity>
         <activity android:name=".AskQuestionActivity"></activity>
         <activity android:name=".QuestionListActivity"></activity>
+        <activity android:name=".QuestionDetailActivity"></activity>
     </application>
 
 

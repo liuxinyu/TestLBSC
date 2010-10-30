@@ -32,6 +32,7 @@
 	<string name="votes_count">%1$d\n投票</string>
 	<string name="question_1st">还没有问题，做第一个提问者？</string>
 	<string name="qna_notes">你知道下列问题的答案吗？</string>
+	<string name="q_detail_notes1">你知道更好的答案？</string>
 	<string name="qna_notes2">或者，你有新问题？</string>
 	<string name="edit_hint">字数少于100字</string>
 	<string name="json_test">[{"result":1},{"question_id":4,"place_id":4,"votes_sum":null,"place_name":"\u4e2d\u5173\u6751\u533b\u9662","answers_count":10,"description":" \u6d4b\u8bd55"},{"question_id":2,"place_id":4,"votes_sum":null,"place_name":"\u4e2d\u5173\u6751\u533b\u9662","answers_count":6,"description":""},{"question_id":1,"place_id":4,"votes_sum":null,"place_name":"\u4e2d\u5173\u6751\u533b\u9662","answers_count":4,"description":" \u6d4b\u8bd5\u4e00\u4e0b\u770b\u770b\uff1f"},{"question_id":3,"place_id":4,"votes_sum":null,"place_name":"\u4e2d\u5173\u6751\u533b\u9662","answers_count":0,"description":" \u6d4b\u8bd5\u4e00\u4e0b4"},{"question_id":5,"place_id":4,"votes_sum":null,"place_name":"\u4e2d\u5173\u6751\u533b\u9662","answers_count":0,"description":" \u6d4b\u8bd56"},{"question_id":7,"place_id":4,"votes_sum":null,"place_name":"\u4e2d\u5173\u6751\u533b\u9662","answers_count":0,"description":" f\u963f\u8fea\u4e8b\u53d1\u65f6\u4e1c\u65b9"},{"question_id":8,"place_id":4,"votes_sum":null,"place_name":"\u4e2d\u5173\u6751\u533b\u9662","answers_count":0,"description":" "},{"question_id":6,"place_id":9,"votes_sum":null,"place_name":"\u661f\u5df4\u514b\u5496\u5561\u5e97","answers_count":0,"description":" \u6d4b\u8bd5\u661f\u5df4\u514b"}]</string>

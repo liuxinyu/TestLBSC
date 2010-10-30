@@ -34,9 +34,11 @@ public final class R {
         public static final int icon_listheader=0x7f020014;
         public static final int icon_place=0x7f020015;
         public static final int icon_place2=0x7f020016;
-        public static final int logobar=0x7f020017;
-        public static final int tab_place=0x7f020018;
-        public static final int tab_question=0x7f020019;
+        public static final int img_people1=0x7f020017;
+        public static final int img_people2=0x7f020018;
+        public static final int logobar=0x7f020019;
+        public static final int tab_place=0x7f02001a;
+        public static final int tab_question=0x7f02001b;
     }
     public static final class id {
         public static final int GridView_toolbar=0x7f05000f;
@@ -46,13 +48,13 @@ public final class R {
         public static final int btn_faverate=0x7f050003;
         public static final int btn_question_submit=0x7f050004;
         public static final int button_login=0x7f05000b;
-        public static final int button_place=0x7f050016;
+        public static final int button_place=0x7f05001c;
         public static final int button_question=0x7f05000e;
         public static final int edit_email1=0x7f050009;
         public static final int edit_password1=0x7f05000a;
         public static final int edit_question=0x7f050002;
         public static final int icon_place=0x7f050010;
-        public static final int icon_place2=0x7f05001c;
+        public static final int icon_place2=0x7f050022;
         public static final int item_image=0x7f050007;
         public static final int item_text=0x7f050008;
         public static final int maingrid=0x7f05000c;
@@ -61,16 +63,22 @@ public final class R {
         public static final int place_number_of_questions=0x7f050013;
         public static final int place_number_of_questions2=0x7f050012;
         public static final int placelist_titlebar=0x7f05000d;
-        public static final int qna_newquestions=0x7f05001a;
-        public static final int qna_notes=0x7f050018;
-        public static final int qna_notes2=0x7f05001b;
-        public static final int qna_titlebar=0x7f050017;
-        public static final int qna_toolbar=0x7f050019;
-        public static final int question_name=0x7f05001d;
-        public static final int question_number_of_answers=0x7f05001f;
-        public static final int question_number_of_votes=0x7f05001e;
+        public static final int q_detail_newquestions=0x7f050019;
+        public static final int q_detail_notes1=0x7f05001a;
+        public static final int q_detail_toolbar=0x7f050018;
+        public static final int qd_toolbar=0x7f050015;
+        public static final int qna_newquestions=0x7f050020;
+        public static final int qna_notes=0x7f05001e;
+        public static final int qna_notes2=0x7f050021;
+        public static final int qna_titlebar=0x7f05001d;
+        public static final int qna_toolbar=0x7f05001f;
+        public static final int question_description=0x7f050017;
+        public static final int question_image_user=0x7f050016;
+        public static final int question_name=0x7f050023;
+        public static final int question_number_of_answers=0x7f050025;
+        public static final int question_number_of_votes=0x7f050024;
         public static final int question_placename=0x7f050005;
-        public static final int questionlist_titlebar=0x7f050015;
+        public static final int questionlist_titlebar=0x7f05001b;
     }
     public static final class layout {
         public static final int active_row=0x7f030000;
@@ -80,21 +88,22 @@ public final class R {
         public static final int main=0x7f030004;
         public static final int placelist=0x7f030005;
         public static final int placerow=0x7f030006;
-        public static final int questionlist=0x7f030007;
-        public static final int questionlistactivity=0x7f030008;
-        public static final int questionrow=0x7f030009;
+        public static final int question_detail_activity=0x7f030007;
+        public static final int questionlist=0x7f030008;
+        public static final int questionlistactivity=0x7f030009;
+        public static final int questionrow=0x7f03000a;
     }
     public static final class string {
         public static final int activities_count=0x7f04001a;
         public static final int answers_count=0x7f04001c;
         public static final int app_name=0x7f040001;
-        public static final int edit_hint=0x7f040021;
+        public static final int edit_hint=0x7f040022;
         public static final int email=0x7f040002;
         public static final int err_no_email=0x7f040016;
         public static final int err_no_password=0x7f040018;
         public static final int err_no_question=0x7f040017;
         public static final int hello=0x7f040000;
-        public static final int json_test=0x7f040022;
+        public static final int json_test=0x7f040023;
         public static final int login=0x7f040007;
         public static final int name=0x7f040004;
         public static final int password=0x7f040003;
@@ -105,8 +114,9 @@ public final class R {
         public static final int place_list_test1=0x7f040013;
         public static final int place_list_test2=0x7f040014;
         public static final int place_list_test3=0x7f040015;
+        public static final int q_detail_notes1=0x7f040020;
         public static final int qna_notes=0x7f04001f;
-        public static final int qna_notes2=0x7f040020;
+        public static final int qna_notes2=0x7f040021;
         public static final int question_1st=0x7f04001e;
         public static final int questions_count=0x7f04001b;
         public static final int signup=0x7f040008;

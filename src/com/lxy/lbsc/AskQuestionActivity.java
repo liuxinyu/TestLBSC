@@ -41,8 +41,7 @@ public class AskQuestionActivity extends Activity {
 	Handler handler = new Handler(){
 		@Override
 	    public void handleMessage(Message msg) {
-	        //update listview			        	
-        	//setListAdapter(new PlacelistAdapter(list));
+	        finish();
 	    }
 	}; 	
 	
@@ -144,6 +143,7 @@ public class AskQuestionActivity extends Activity {
             }
             catch (Throwable t) {
                 // just end the background thread
+            	Log.e(TAG, t.toString());
             }
             
         }

@@ -13,7 +13,11 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import com.lxy.lbsc.PlacelistActivity.PlaceModel;
+
 import android.app.ListActivity;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
@@ -25,6 +29,7 @@ import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -106,6 +111,21 @@ public class QuestionListActivity extends ListActivity {
 	public void onStop() {
         super.onStop();
         isRunning.set(false);
+    }
+	
+	@Override
+    public void onListItemClick(ListView parent, View v, int position, long id) {
+    	QuestionModel question = list.get(position);     	
+    	Toast.makeText(this, question.question+ "-»•Œ ¥ ”Õº",2000).show(); 
+    	Intent intent = new Intent();  
+        intent.setClass(QuestionListActivity.this, QuestionDetailActivity.class);  
+        Bundle mBundle = new Bundle();  
+        mBundle.putString("place_name", mPlaceName);
+        mBundle.putInt("place_id", mPlaceId);
+        mBundle.putString("question_name", question.question);
+        mBundle.putInt("question_id", question.question_id); 
+        intent.putExtras(mBundle);  
+        startActivity(intent);    	    	
     }
 	
     public class GetQuestionListRunnable implements Runnable {
