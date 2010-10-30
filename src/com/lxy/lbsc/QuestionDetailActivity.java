@@ -63,7 +63,5 @@ public class QuestionDetailActivity extends ListActivity {
             	Toast.makeText(QuestionDetailActivity.this, "To submit answer", Toast.LENGTH_SHORT).show();            	
             }  
         }); 	
-	}
-	
-	
+	}	
 }

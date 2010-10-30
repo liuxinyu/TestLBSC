@@ -49,6 +49,8 @@ public class PlacelistActivity extends ListActivity {
 	private final int TOOLBAR_ITEM_BACK = 3;
 	private final int TOOLBAR_ITEM_SEARCH = 4;
 	private int mPlacelistMode = TOOLBAR_ITEM_HOT; 
+	private int mUserId=0;
+	private String mToken=null;
 	AtomicBoolean isRunning=new AtomicBoolean(false);
 	ArrayList<PlaceModel> list=new ArrayList<PlaceModel>();
 	
@@ -71,7 +73,7 @@ public class PlacelistActivity extends ListActivity {
         		list.add(new PlaceModel(getString(R.string.place_list1)));
         		url = String.format(getString(R.string.url_nearbyplace), "39.980543", "116.321000");
         	}else if (mPlacelistMode==TOOLBAR_ITEM_FAVERATE){
-        		url = String.format(getString(R.string.url_favorate_place), "3");
+        		url = String.format(getString(R.string.url_favorate_place), mUserId,mToken);
         	}else{
         		// something but be wrong!!!
         	}
@@ -87,7 +89,12 @@ public class PlacelistActivity extends ListActivity {
     			Log.i(TAG, responseBody);
     			//2. parse JSON
     			JSONArray results = new JSONArray(responseBody);
-    			for(int i=0; i< results.length(); i++){
+    			int ret = results.getJSONObject(0).getInt("result");
+    			if (ret!=1){ // return 'result=0' from server. 
+    				handler.sendMessage(handler.obtainMessage());
+    				return; 
+    			}    			
+    			for(int i=1; i< results.length(); i++){
     		        try{
     		            //Get My JSONObject and grab the String Value that I want.
     		        	JSONObject obj = results.getJSONObject(i);
@@ -110,7 +117,7 @@ public class PlacelistActivity extends ListActivity {
             	handler.sendMessage(handler.obtainMessage());
             }
             catch (Throwable t) {
-                // just end the background thread
+            	Log.e(TAG, t.toString());
             }
             
         }
@@ -175,14 +182,24 @@ public class PlacelistActivity extends ListActivity {
 					}
 				case TOOLBAR_ITEM_FAVERATE:
 					{
-						mPlacelistMode = TOOLBAR_ITEM_FAVERATE; 
-						if (isRunning.get()!=true){
-							isRunning.set(true);
-						}
-						Thread background=new Thread(new GetPlaceRunnable() );
-						background.start();
-						str = "¹Ø×¢";
-						break;
+						SharedPreferences prefs = getSharedPreferences("data", 0); 
+		                mUserId = prefs.getInt("uid", 0);
+		                mToken = prefs.getString("token", null); 
+		                if (mUserId ==0){ // need authentication for faverate
+		                	Toast.makeText(PlacelistActivity.this, "haven't logged in yet",4000).show();
+		                	Intent intent = new Intent(PlacelistActivity.this, login_mgmt.class);
+		                    startActivity(intent);
+		                    //TODO: finish() or return;?  
+		                }else{
+							mPlacelistMode = TOOLBAR_ITEM_FAVERATE; 
+							if (isRunning.get()!=true){
+								isRunning.set(true);
+							}
+							Thread background=new Thread(new GetPlaceRunnable() );
+							background.start();
+							str = "¹Ø×¢";
+							break;
+		                }
 					}
 				case TOOLBAR_ITEM_BACK:
 					str = "ºóÍË";
