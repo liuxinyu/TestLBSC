@@ -188,7 +188,11 @@ public class QuestionList extends ListActivity {
 					Log.e(TAG, "ERROR in getting question list");
 					return;
 				}
-    			for(int i=0; i< obj_array.length(); i++){
+				int ret1 = obj_array.getJSONObject(0).getInt("result");
+    			if (ret1!=1){ // return 'result=0' from server. 
+    				return; 
+    			}  
+    			for(int i=1; i< obj_array.length(); i++){
     				//Get My JSONObject and grab the String Value that I want.
 	    		    JSONObject obj = obj_array.getJSONObject(i);
 	    		    QuestionModel place = new QuestionModel();

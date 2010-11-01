@@ -13,9 +13,6 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import com.lxy.lbsc.PlacelistActivity.PlaceModel;
-
 import android.app.ListActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -28,6 +25,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -46,8 +44,22 @@ public class QuestionListActivity extends ListActivity {
 	Handler handler = new Handler(){
 		@Override
 		public void handleMessage(Message msg) {
-	        	setListAdapter(new QuestionlistAdapter(QuestionListActivity.this, list));
-	        	getListView().setOnItemSelectedListener(listener);
+				if (msg.arg1==1){ // submit question succeed. question id in arg2; 
+					Toast.makeText(QuestionListActivity.this, "ok. question id="+msg.arg2, Toast.LENGTH_SHORT).show();
+					EditText et= (EditText)findViewById(R.id.edit_question); 
+					et.setText(null); 
+					isRunning.set(true);
+					Thread background=new Thread(new GetQuestionListRunnable() );
+			        background.start();
+				}else if (msg.arg2 == 1){
+					Toast.makeText(QuestionListActivity.this, "meet exception in submit questions", Toast.LENGTH_SHORT).show();
+				}else if (msg.arg2 == 2){
+					Toast.makeText(QuestionListActivity.this, "server result=0", Toast.LENGTH_SHORT).show();
+				}
+				else{
+					setListAdapter(new QuestionlistAdapter(QuestionListActivity.this, list));
+					getListView().setOnItemSelectedListener(listener);
+				}		        
 		    }
 		};
 	AdapterView.OnItemSelectedListener listener=new AdapterView.OnItemSelectedListener() {
@@ -94,7 +106,29 @@ public class QuestionListActivity extends ListActivity {
         btn_submit.setOnClickListener(new Button.OnClickListener(){  
             @Override  
             public void onClick(View v) {  
-            	Toast.makeText(QuestionListActivity.this, "To submit question", Toast.LENGTH_SHORT).show();            	
+            	Toast.makeText(QuestionListActivity.this, "To submit question", Toast.LENGTH_SHORT).show();      
+            	EditText et= (EditText)findViewById(R.id.edit_question); 
+            	String str = et.getText().toString(); 
+            	if (str.trim().length()==0){
+            		Toast.makeText(QuestionListActivity.this, getString(R.string.err_no_question), Toast.LENGTH_SHORT).show();
+            		return;
+            	}
+            	SharedPreferences prefs = getSharedPreferences("data", 0); 
+                int uid = prefs.getInt("uid", 0);
+                String token = prefs.getString("token", null);
+                String webhome = prefs.getString("webhome", "http://10.0.2.2:3000");
+                if (uid==0){
+                	Toast.makeText(QuestionListActivity.this, "haven't logged in yet",4000).show();
+                	Intent intent = new Intent(QuestionListActivity.this, login_mgmt.class);
+                    startActivity(intent);
+                    finish();
+                    //return; 
+                }
+            	Toast.makeText(QuestionListActivity.this, "To submit question", Toast.LENGTH_SHORT).show(); 
+            	isRunning.set(true);
+        		Thread background=new Thread(new SubmitQuestionRunnable(str.trim(),uid,token, mPlaceId, 
+        				handler, webhome, QuestionListActivity.this)) ;
+                background.start();
             }  
         }); 	
 	}
