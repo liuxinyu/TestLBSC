@@ -36,17 +36,38 @@
 				/>
 		</LinearLayout>
 	</LinearLayout>	
-	<GridView 
-		android:id="@+id/GridView_toolbar"
-		android:layout_weight="1"
+	<RadioGroup android:id="@+id/toolbar_radio" 
+		android:layout_alignParentBottom="true" 
 		android:layout_height="wrap_content" 
 		android:layout_width="fill_parent"
-		android:layout_alignParentBottom="true"
-		/>		
+		android:background="@drawable/toolbar_background"
+		android:orientation="horizontal" >
+		<RadioButton android:id="@+id/radio1"
+			android:layout_alignParentLeft="true"  
+			android:layout_width="100dp" 
+			android:layout_height="wrap_content" 
+			android:button="@drawable/btn_radio1_1" 
+			android:checked="true" 
+			/>
+		<RadioButton 
+			android:id="@+id/radio2" 
+			android:layout_toRightOf="@id/radio1"
+			android:layout_width="100dp" 
+			android:layout_height="wrap_content" 
+			android:button="@drawable/btn_radio2_0" android:layout_marginLeft="10dp"/>
+		<RadioButton 
+			android:id="@+id/radio3" 
+			android:layout_alignParentRight="true" 
+			android:layout_toRightOf="@id/radio2"
+			android:layout_width="100dp"
+			android:layout_height="wrap_content"
+			android:button="@drawable/btn_radio3_0"			
+			android:layout_marginLeft="10dp"/>
+	</RadioGroup>	
 	<ListView
 		android:id="@android:id/list"
 		android:layout_below="@id/questionlist_titlebar"
-		android:layout_above="@id/GridView_toolbar"
+		android:layout_above="@id/toolbar_radio"
 		android:layout_width="fill_parent" 
 		android:layout_height="wrap_content"
 		android:drawSelectorOnTop="true"

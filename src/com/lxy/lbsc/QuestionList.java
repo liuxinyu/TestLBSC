@@ -26,6 +26,8 @@ import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemClickListener;
 
@@ -68,65 +70,45 @@ public class QuestionList extends ListActivity {
             }  
         }); 
 		
-		// 创建底部菜单 Toolbar
-		toolbarGrid = (GridView) findViewById(R.id.GridView_toolbar);
-		//toolbarGrid.setBackgroundResource(R.drawable.channelgallery_bg);// 设置背景
-		toolbarGrid.setNumColumns(5);// 设置每行列数
-		toolbarGrid.setGravity(Gravity.CENTER);// 位置居中
-		toolbarGrid.setVerticalSpacing(10);// 垂直间隔
-		//toolbarGrid.setHorizontalSpacing(10);// 水平间隔
-		toolbarGrid.setAdapter(new ImageAdapter(this));
-		toolbarGrid.setOnItemClickListener(new OnItemClickListener() {
-			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
-					long arg3) {
-				String str=null;
-				if (mQuestionlistMode==arg2) {
-					Toast.makeText(QuestionList.this,"现在94啊！",Toast.LENGTH_SHORT).show();
-					return; 
-				}
-				switch (arg2) {
-				case TOOLBAR_ITEM_HOT:
-					{
-						mQuestionlistMode = TOOLBAR_ITEM_HOT; 					
-						if (isRunning.get()!=true){
-							isRunning.set(true);
-						}
-						Thread background=new Thread(new GetQuestionRunnable() );
-						background.start();	
-						str = "热点";
-						break;
+		RadioGroup rGroup = (RadioGroup) findViewById(R.id.toolbar_radio);
+		final RadioButton button1 = (RadioButton) findViewById(R.id.radio1);
+		final RadioButton button2 = (RadioButton) findViewById(R.id.radio2);
+		final RadioButton button3 = (RadioButton) findViewById(R.id.radio3);
+		rGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener(){
+			@Override
+	        public void onCheckedChanged(RadioGroup group, int checkedId){
+				if(checkedId==button1.getId()){
+	        		button1.setButtonDrawable(R.drawable.btn_radio1_1); 
+	        		button2.setButtonDrawable(R.drawable.btn_radio2_0);
+	        		button3.setButtonDrawable(R.drawable.btn_radio3_0);
+	        		mQuestionlistMode = TOOLBAR_ITEM_HOT; 					
+					if (isRunning.get()!=true){
+						isRunning.set(true);
 					}
-				case TOOLBAR_ITEM_NEARBY:
-					{
-						mQuestionlistMode = TOOLBAR_ITEM_NEARBY;					
-						if (isRunning.get()!=true){
-							isRunning.set(true);
-						}
-						Thread background=new Thread(new GetQuestionRunnable() );
-						background.start();
-						str = "附近";
-						break;
+					Thread background=new Thread(new GetQuestionRunnable() );
+					background.start();	
+	        	}else if (checkedId==button2.getId()){
+	        		button1.setButtonDrawable(R.drawable.btn_radio1_0); 
+	        		button2.setButtonDrawable(R.drawable.btn_radio2_1);
+	        		button3.setButtonDrawable(R.drawable.btn_radio3_0);
+	        		mQuestionlistMode = TOOLBAR_ITEM_NEARBY;					
+					if (isRunning.get()!=true){
+						isRunning.set(true);
 					}
-				case TOOLBAR_ITEM_FAVERATE:
-					{
-						mQuestionlistMode = TOOLBAR_ITEM_FAVERATE; 
-						if (isRunning.get()!=true){
-							isRunning.set(true);
-						}
-						Thread background=new Thread(new GetQuestionRunnable() );
-						background.start();
-						str = "关注";
-						break;
+					Thread background=new Thread(new GetQuestionRunnable() );
+					background.start();
+	        	}else if (checkedId==button3.getId()){
+	        		button1.setButtonDrawable(R.drawable.btn_radio1_0); 
+	        		button2.setButtonDrawable(R.drawable.btn_radio2_0);
+	        		button3.setButtonDrawable(R.drawable.btn_radio3_1);
+	        		mQuestionlistMode = TOOLBAR_ITEM_FAVERATE; 
+					if (isRunning.get()!=true){
+						isRunning.set(true);
 					}
-				case TOOLBAR_ITEM_BACK:
-					str = "后退";
-					break;
-				case TOOLBAR_ITEM_SEARCH:
-					str = "搜索";
-					break;
-				}
-				Toast.makeText(QuestionList.this,str,Toast.LENGTH_SHORT).show();
-			}
+					Thread background=new Thread(new GetQuestionRunnable() );
+					background.start();
+	        	}        			
+	        }
 		});
 	}
 	
