@@ -53,6 +53,7 @@ public class QuestionListActivity extends ListActivity {
 			        background.start();
 				}else if (msg.arg2 == 1){
 					Toast.makeText(QuestionListActivity.this, "meet exception in submit questions", Toast.LENGTH_SHORT).show();
+					//TODO: very likely user didn't loggined in. To clear loggin info and re-direct to loggin page? 
 				}else if (msg.arg2 == 2){
 					Toast.makeText(QuestionListActivity.this, "server result=0", Toast.LENGTH_SHORT).show();
 				}
@@ -106,7 +107,6 @@ public class QuestionListActivity extends ListActivity {
         btn_submit.setOnClickListener(new Button.OnClickListener(){  
             @Override  
             public void onClick(View v) {  
-            	Toast.makeText(QuestionListActivity.this, "To submit question", Toast.LENGTH_SHORT).show();      
             	EditText et= (EditText)findViewById(R.id.edit_question); 
             	String str = et.getText().toString(); 
             	if (str.trim().length()==0){
