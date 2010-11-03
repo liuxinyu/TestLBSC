@@ -31,6 +31,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -50,25 +53,19 @@ public class QuestionDetailActivity extends ListActivity {
 		@Override
 		public void handleMessage(Message msg) {
 			if (msg.arg1==1){ // list answewrs succeed
-				setListAdapter(new AnswersAdapter(QuestionDetailActivity.this, list));
-				getListView().setOnItemSelectedListener(listener);
-				//Toast.makeText(QuestionListActivity.this, "ok. question id="+msg.arg2, Toast.LENGTH_SHORT).show();
-				//EditText et= (EditText)findViewById(R.id.edit_question); 
-				//et.setText(null); 
-				//isRunning.set(true);
-				//Thread background=new Thread(new GetQuestionListRunnable() );
-			    //background.start();
-			}else if (msg.arg2 == 1){
-				//Toast.makeText(QuestionListActivity.this, "meet exception in submit questions", Toast.LENGTH_SHORT).show();
-				//TODO: very likely user didn't loggined in. To clear loggin info and re-direct to loggin page? 
-			}else if (msg.arg2 == 2){
-				//Toast.makeText(QuestionListActivity.this, "server result=0", Toast.LENGTH_SHORT).show();
-			}
-			else{
-				//setListAdapter(new QuestionlistAdapter(QuestionListActivity.this, list));
+				setListAdapter(new AnswersAdapter(list));
 				//getListView().setOnItemSelectedListener(listener);
+			}
+			else if (msg.arg1 ==0){ //failed
+				if (msg.arg2==1){
+					Toast.makeText(QuestionDetailActivity.this, "no answers yet", Toast.LENGTH_SHORT).show();
+				}else{
+					Toast.makeText(QuestionDetailActivity.this, "failed for unknown reason", Toast.LENGTH_SHORT).show();
+				}
+				
 			}		        
-		}};
+	}};
+
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -173,36 +170,77 @@ public class QuestionDetailActivity extends ListActivity {
             catch (Throwable t) {
             	Log.e(TAG, t.toString());
             }     
-            handler.sendMessage(handler.obtainMessage());
+            handler.sendMessage(msg);
         }
 	}
+	// 		android:onClick="onBtnUp"
+	/*
+	public void onBtnUp(View v){
+		Toast.makeText(QuestionDetailActivity.this, "onBtnUp", Toast.LENGTH_SHORT).show();
+		RelativeLayout row = (RelativeLayout)v.getParent();
+		ListView list = (ListView)row.getParent(); 
+		View focus = list.getFocusedChild();
+		int position = list.indexOfChild(focus); 
+		
+		ImageButton btn = (ImageButton)row.getChildAt(3); 		
+	}
+	
+	public void onBtnDown(View v){
+		Toast.makeText(QuestionDetailActivity.this, "onBtnUp", Toast.LENGTH_SHORT).show();
+		RelativeLayout row = (RelativeLayout)v.getParent();
+		ImageButton btn = (ImageButton)row.getChildAt(2); 		
+	}*/
 	
 	class AnswersAdapter extends ArrayAdapter<AnswersModel> {
-		AnswersAdapter(ArrayList<AnswersModel> list) {
-			super(QuestionDetailActivity.this, R.layout.answers_row, list);
+		AnswersAdapter(ArrayList<AnswersModel> plist) {
+			super(QuestionDetailActivity.this, R.layout.answers_row, plist);
 		}		
-		public View getView(int position, View convertView, ViewGroup parent) {
+		public View getView(final int position, View convertView, ViewGroup parent) {
 			View row=convertView;
+			ViewHolder holder=null; 
 			AnswersModel model=list.get(position); //getModel(position);
-			if (row==null) {				
+			if (row==null) {		
+				holder = new ViewHolder(); 
 				LayoutInflater inflater=getLayoutInflater();
 				row=inflater.inflate(R.layout.answers_row, parent, false);
-				row.setTag(R.id.points, row.findViewById(R.id.points));
-				row.setTag(R.id.img_people, row.findViewById(R.id.img_people));
-				row.setTag(R.id.text_answer, row.findViewById(R.id.text_answer));
-				row.setTag(R.id.btn_up, row.findViewById(R.id.btn_up));
-				row.setTag(R.id.btn_down, row.findViewById(R.id.btn_down));
+				holder.label1 = (TextView)row.findViewById(R.id.points); 
+				holder.img = (ImageView)row.findViewById(R.id.img_people); 
+				holder.label2 = (TextView)row.findViewById(R.id.text_answer); 
+				holder.btn_up = (ImageButton)row.findViewById(R.id.btn_up); 
+				holder.btn_down = (ImageButton)row.findViewById(R.id.btn_down); 
+				row.setTag(holder); 
+			}else{
+				holder = (ViewHolder)row.getTag();				
 			}
-			TextView label1=(TextView)row.getTag(R.id.points);
-			TextView label2=(TextView)row.getTag(R.id.text_answer);	
-			label1.setText(model.points);
-			label2.setText(model.toString());
+			holder.label1.setText(String.valueOf(model.points));
+			holder.label2.setText(model.toString());
+			holder.btn_up.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					Toast.makeText(QuestionDetailActivity.this, "btn up, pos="+position, Toast.LENGTH_SHORT).show();
+				}
+			});
+			holder.btn_down.setOnClickListener(new View.OnClickListener() {
+				@Override
+				public void onClick(View v) {
+					Toast.makeText(QuestionDetailActivity.this, "btn down, pos="+position, Toast.LENGTH_SHORT).show();
+				}
+			});
 			Log.i(TAG, "Ok in get/set answers. Position="+position+"Answer="+model.toString());
 			return(row);			
 		}
 	}
 	
-	class AnswersModel{
+	
+	public final class ViewHolder{
+		public TextView label1;
+		public ImageView img; 
+		public TextView label2;
+		public ImageButton btn_up;
+		public ImageButton btn_down; 
+	}
+	
+	public final class AnswersModel{
 		String answer;
 		int answer_id=0;
 		int points=0;

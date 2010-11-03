@@ -16,7 +16,7 @@
 	<string name="url_favorate_place">/place/followed.json?user_id=%1$d&amp;m_token=%2$s</string>	
 	<string name="url_submit_question">/action.json?place_id=%1$d&amp;user_id=%2$d&amp;m_token=%3$s&amp;points=%4$d&amp;action_id=1&amp;question=%5$s</string>
 	<string name="url_question_hot">/question/hot.json</string>
-	<string name="url_answers_list">/showquestion.json?id=%1$d&amp;</string>
+	<string name="url_answers_list">/showquestion.json?id=%1$d</string>
 	<string name="url_newquestion_at_place">/showplace.json?id=%1$d&amp;type=new_question</string> 
 	<string name="place_list1">- 有问题</string>
 	<string name="place_list2">- 待开发</string>

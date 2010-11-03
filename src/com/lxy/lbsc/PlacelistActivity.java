@@ -59,7 +59,6 @@ public class PlacelistActivity extends ListActivity {
 	Handler handler = new Handler(){
 		@Override
 	    public void handleMessage(Message msg) {
-	        //update listview			        	
         	setListAdapter(new PlacelistAdapter(list));
 	    }
 	}; 	
